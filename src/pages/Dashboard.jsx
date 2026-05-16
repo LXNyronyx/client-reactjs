@@ -8,6 +8,9 @@ function Dashboard() {
   const [totalPages, setTotalPages] = useState(1);
   const navigate = useNavigate();
 
+  // Check if the user is currently logged in based on token existence
+  const isLoggedIn = !!localStorage.getItem('token');
+
   useEffect(() => {
     fetchProducts(page);
   }, [page]);
@@ -19,16 +22,17 @@ function Dashboard() {
       setTotalPages(response.data.totalPages);
     } catch (err) {
       console.error('Failed to fetch products', err);
-      // If unauthorized, redirect to login
-      if (err.response && err.response.status === 401) {
-        handleLogout();
-      }
     }
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('name_id');
+    // Reload to clear state and switch button back to Login
+    window.location.reload();
+  };
+
+  const handleLogin = () => {
     navigate('/login');
   };
 
@@ -36,7 +40,11 @@ function Dashboard() {
     <div className="container container-lg">
       <div className="header-row">
         <h2 style={{ margin: 0 }}>Product Dashboard</h2>
-        <button onClick={handleLogout}>Logout</button>
+        {isLoggedIn ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <button className="primary" onClick={handleLogin}>Login (Admin)</button>
+        )}
       </div>
 
       <div className="mt-3">

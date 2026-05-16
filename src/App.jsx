@@ -29,7 +29,7 @@ function App() {
       <Routes>
         <Route 
           path="/setup" 
-          element={!isConfigured ? <Setup onComplete={() => setIsConfigured(true)} /> : <Navigate to="/login" replace />} 
+          element={!isConfigured ? <Setup onComplete={() => setIsConfigured(true)} /> : <Navigate to="/dashboard" replace />} 
         />
         <Route 
           path="/login" 
@@ -41,7 +41,7 @@ function App() {
         />
         <Route 
           path="*" 
-          element={<Navigate to={isConfigured ? "/login" : "/setup"} replace />} 
+          element={<Navigate to={isConfigured ? "/dashboard" : "/setup"} replace />} 
         />
       </Routes>
     </BrowserRouter>
