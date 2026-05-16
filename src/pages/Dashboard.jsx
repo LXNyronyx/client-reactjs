@@ -65,9 +65,19 @@ function Dashboard() {
       </div>
 
       <div className="pagination">
-        <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous</button>
+        {page > 1 ? (
+          <button onClick={() => setPage(page - 1)}>Previous</button>
+        ) : (
+          <button style={{ visibility: 'hidden' }}>Previous</button>
+        )}
+        
         <span style={{ fontSize: '14px', color: '#666' }}>Page {page} of {totalPages || 1}</span>
-        <button disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Next</button>
+        
+        {page < totalPages ? (
+          <button onClick={() => setPage(page + 1)}>Next</button>
+        ) : (
+          <button style={{ visibility: 'hidden' }}>Next</button>
+        )}
       </div>
     </div>
   );
