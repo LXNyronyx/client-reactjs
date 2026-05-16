@@ -35,16 +35,17 @@ function Setup({ onComplete }) {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '500px', margin: '0 auto' }}>
-      <h2>System Setup</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        <h3>Admin Account</h3>
+    <div className="container container-md">
+      <h2 className="text-center" style={{ marginBottom: '25px' }}>System Setup</h2>
+      {error && <div className="error-text text-center">{error}</div>}
+      
+      <form onSubmit={handleSubmit} className="form-group">
+        <h3 style={{ fontSize: '16px', borderBottom: '1px solid #f0f0f0', paddingBottom: '10px' }}>Admin Account</h3>
         <input type="email" name="admin_email" placeholder="Admin Email" required onChange={handleChange} />
         <input type="password" name="admin_password" placeholder="Password" required onChange={handleChange} />
         <input type="password" name="admin_password_confirm" placeholder="Confirm Password" required onChange={handleChange} />
 
-        <h3>Database Configuration</h3>
+        <h3 className="mt-3" style={{ fontSize: '16px', borderBottom: '1px solid #f0f0f0', paddingBottom: '10px' }}>Database Configuration</h3>
         <select name="db_type" onChange={handleChange} value={formData.db_type}>
           <option value="sqlite">SQLite</option>
           <option value="mysql">MySQL</option>
@@ -52,15 +53,15 @@ function Setup({ onComplete }) {
         
         {formData.db_type === 'mysql' && (
           <>
-            <input type="text" name="db_host" placeholder="Database Host" required onChange={handleChange} />
+            <input type="text" name="db_host" placeholder="Database Host (e.g., localhost)" required onChange={handleChange} />
             <input type="text" name="db_name" placeholder="Database Name" required onChange={handleChange} />
             <input type="text" name="db_user" placeholder="Database User" required onChange={handleChange} />
             <input type="password" name="db_password" placeholder="Database Password" onChange={handleChange} />
           </>
         )}
 
-        <button type="submit" disabled={loading}>
-          {loading ? 'Configuring...' : 'Initialize System'}
+        <button type="submit" className="primary mt-3" disabled={loading}>
+          {loading ? 'Configuring System...' : 'Initialize System'}
         </button>
       </form>
     </div>

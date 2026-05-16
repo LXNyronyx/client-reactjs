@@ -33,32 +33,32 @@ function Dashboard() {
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <h2>Product Dashboard</h2>
+    <div className="container container-lg">
+      <div className="header-row">
+        <h2 style={{ margin: 0 }}>Product Dashboard</h2>
         <button onClick={handleLogout}>Logout</button>
       </div>
 
-      <div style={{ marginTop: '20px' }}>
+      <div className="mt-3">
         {products.length === 0 ? (
-          <p>No products found.</p>
+          <p className="text-center" style={{ color: '#888', padding: '40px 0' }}>No products found.</p>
         ) : (
-          <ul style={{ listStyle: 'none', padding: 0 }}>
+          <ul className="card-list">
             {products.map((product) => (
-              <li key={product.id} style={{ border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+              <li key={product.id} className="card-item">
                 <h3>{product.name_display}</h3>
-                <p>Type: {product.type}</p>
+                <p><strong>Type:</strong> {product.type}</p>
                 <p>{product.description}</p>
-                <p>Quantity: {product.quantity}</p>
+                <p><strong>Quantity:</strong> {product.quantity}</p>
               </li>
             ))}
           </ul>
         )}
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '20px' }}>
+      <div className="pagination">
         <button disabled={page <= 1} onClick={() => setPage(page - 1)}>Previous</button>
-        <span>Page {page} of {totalPages || 1}</span>
+        <span style={{ fontSize: '14px', color: '#666' }}>Page {page} of {totalPages || 1}</span>
         <button disabled={page >= totalPages} onClick={() => setPage(page + 1)}>Next</button>
       </div>
     </div>

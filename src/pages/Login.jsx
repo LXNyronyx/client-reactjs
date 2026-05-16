@@ -18,18 +18,19 @@ function Login() {
       localStorage.setItem('name_id', response.data.name_id);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed.');
+      setError(err.response?.data?.error || 'Login failed. Please check your credentials.');
     }
   };
 
   return (
-    <div style={{ padding: '20px', maxWidth: '300px', margin: '50px auto', textAlign: 'center' }}>
-      <h2>Login</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    <div className="container container-sm">
+      <h2 className="text-center" style={{ marginBottom: '20px' }}>Login</h2>
+      {error && <div className="error-text text-center">{error}</div>}
+      
+      <form onSubmit={handleLogin} className="form-group">
         <input 
           type="email" 
-          placeholder="Email" 
+          placeholder="Email Address" 
           value={email} 
           onChange={(e) => setEmail(e.target.value)} 
           required 
@@ -41,7 +42,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)} 
           required 
         />
-        <button type="submit">Sign In</button>
+        <button type="submit" className="primary mt-3">Sign In</button>
       </form>
     </div>
   );
