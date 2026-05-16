@@ -1,0 +1,36 @@
+{
+  "name": "@lxnyronyx/client-reactjs",
+  "version": "0.0.0",
+  "main": "src/main.jsx",
+  "homepage": "https://lxnyronyx.github.io/website",
+  "license": "SEE LICENSE IN https://lxnyronyx.github.io/website/license",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LXNyronyx/client-reactjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LXNyronyx/client-reactjs/issues"
+  },
+  "author": {
+    "name": "JetsadaWijit",
+    "url": "https://jetsadawijit.github.io"
+  },
+  "description": "React frontend for shopping app with dynamic DB setup.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.16.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "react-router-dom": "^7.15.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "eslint": "^10.4.0",
+    "prettier": "^3.8.3",
+    "vite": "^8.0.13"
+  }
+}
